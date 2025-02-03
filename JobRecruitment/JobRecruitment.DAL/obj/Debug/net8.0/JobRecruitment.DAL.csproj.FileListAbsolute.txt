@@ -1,0 +1,17 @@
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/bin/Debug/net8.0/JobRecruitment.DAL.deps.json
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/bin/Debug/net8.0/JobRecruitment.DAL.runtimeconfig.json
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/bin/Debug/net8.0/JobRecruitment.DAL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/bin/Debug/net8.0/JobRecruitment.DAL.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/bin/Debug/net8.0/JobRecruitment.Core.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/bin/Debug/net8.0/JobRecruitment.Core.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.csproj.AssemblyReference.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.AssemblyInfoInputs.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.AssemblyInfo.cs
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.csproj.CoreCompileInputs.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecru.2E396774.Up2Date
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/refint/JobRecruitment.DAL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.genruntimeconfig.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/ref/JobRecruitment.DAL.dll

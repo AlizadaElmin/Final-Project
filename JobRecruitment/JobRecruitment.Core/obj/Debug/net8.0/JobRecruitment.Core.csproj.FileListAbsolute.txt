@@ -1,0 +1,12 @@
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/bin/Debug/net8.0/JobRecruitment.Core.deps.json
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/bin/Debug/net8.0/JobRecruitment.Core.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/bin/Debug/net8.0/JobRecruitment.Core.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.csproj.AssemblyReference.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.AssemblyInfoInputs.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.AssemblyInfo.cs
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.csproj.CoreCompileInputs.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/refint/JobRecruitment.Core.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/ref/JobRecruitment.Core.dll

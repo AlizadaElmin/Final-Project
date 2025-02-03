@@ -1,0 +1,218 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/JobRecruitment.BL.csproj": {}
+  },
+  "projects": {
+    "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/JobRecruitment.BL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/JobRecruitment.BL.csproj",
+        "projectName": "JobRecruitment.BL",
+        "projectPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/JobRecruitment.BL.csproj",
+        "packagesPath": "/Users/elmin/.nuget/packages/",
+        "outputPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/elmin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/JobRecruitment.DAL.csproj": {
+                "projectPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/JobRecruitment.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/JobRecruitment.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/JobRecruitment.Core.csproj",
+        "projectName": "JobRecruitment.Core",
+        "projectPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/JobRecruitment.Core.csproj",
+        "packagesPath": "/Users/elmin/.nuget/packages/",
+        "outputPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/elmin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/JobRecruitment.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/JobRecruitment.DAL.csproj",
+        "projectName": "JobRecruitment.DAL",
+        "projectPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/JobRecruitment.DAL.csproj",
+        "packagesPath": "/Users/elmin/.nuget/packages/",
+        "outputPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/elmin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/JobRecruitment.Core.csproj": {
+                "projectPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/JobRecruitment.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

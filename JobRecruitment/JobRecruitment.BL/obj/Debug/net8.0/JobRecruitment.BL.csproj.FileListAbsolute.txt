@@ -1,0 +1,17 @@
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.BL.deps.json
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.BL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.BL.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.Core.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.DAL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.DAL.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/bin/Debug/net8.0/JobRecruitment.Core.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.csproj.AssemblyReference.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.AssemblyInfoInputs.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.AssemblyInfo.cs
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.csproj.CoreCompileInputs.cache
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecru.55589776.Up2Date
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/refint/JobRecruitment.BL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/JobRecruitment.BL.pdb
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.BL/obj/Debug/net8.0/ref/JobRecruitment.BL.dll
