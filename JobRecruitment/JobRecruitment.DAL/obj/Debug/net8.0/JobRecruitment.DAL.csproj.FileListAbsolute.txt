@@ -15,3 +15,4 @@
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.pdb
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.genruntimeconfig.cache
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/ref/JobRecruitment.DAL.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/Debug/net8.0/JobRecruitment.DAL.sourcelink.json

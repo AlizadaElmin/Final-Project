@@ -10,3 +10,4 @@
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/refint/JobRecruitment.Core.dll
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.pdb
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/ref/JobRecruitment.Core.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/Debug/net8.0/JobRecruitment.Core.sourcelink.json
