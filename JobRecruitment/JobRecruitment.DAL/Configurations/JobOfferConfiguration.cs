@@ -12,6 +12,6 @@ public class JobOfferConfiguration:IEntityTypeConfiguration<JobOffer>
         builder.Property(x => x.Description).IsRequired().HasMaxLength(256);
         builder.HasOne(x=>x.Category).WithMany(y=>y.JobOffers).HasForeignKey(x=>x.CategoryId);
         builder.HasOne(x=>x.Employer).WithMany(y=>y.PostedJobs).HasForeignKey(x=>x.EmployerId);
-        builder.HasMany(x=>x.Candidates).WithMany(y=>y.AppliedJobs);
+        builder.HasMany(x => x.Candidates).WithOne(y => y.JobOffer).HasForeignKey(y=>y.JobOfferId);
     }
 }

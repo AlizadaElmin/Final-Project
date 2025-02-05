@@ -10,6 +10,6 @@ public class JobOffer:BaseEntity
     public Category Category { get; set; }
     public string EmployerId { get; set; }
     public Employer Employer { get; set; }
-    public ICollection<Candidate> Candidates { get; set; }
+    public ICollection<CandidateJobOffer> Candidates { get; set; } 
     public ICollection<SavedJob> SavedByUsers { get; set; } 
 }

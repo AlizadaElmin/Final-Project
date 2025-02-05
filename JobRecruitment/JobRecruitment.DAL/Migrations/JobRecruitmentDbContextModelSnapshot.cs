@@ -22,17 +22,35 @@ namespace JobRecruitment.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CandidateJobOffer", b =>
+            modelBuilder.Entity("JobRecruitment.Core.Entities.CandidateJobOffer", b =>
                 {
-                    b.Property<int>("AppliedJobsId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CandidatesId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CandidateId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("AppliedJobsId", "CandidatesId");
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("CandidatesId");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("JobOfferId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CandidateId");
+
+                    b.HasIndex("JobOfferId");
 
                     b.ToTable("CandidateJobOffer");
                 });
@@ -105,6 +123,39 @@ namespace JobRecruitment.DAL.Migrations
                     b.HasIndex("EmployerId");
 
                     b.ToTable("JobOffers");
+                });
+
+            modelBuilder.Entity("JobRecruitment.Core.Entities.SavedJob", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CandidateId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("JobOfferId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CandidateId");
+
+                    b.HasIndex("JobOfferId");
+
+                    b.ToTable("SavedJob");
                 });
 
             modelBuilder.Entity("JobRecruitment.Core.Entities.User", b =>
@@ -351,19 +402,23 @@ namespace JobRecruitment.DAL.Migrations
                     b.HasDiscriminator().HasValue("Employer");
                 });
 
-            modelBuilder.Entity("CandidateJobOffer", b =>
+            modelBuilder.Entity("JobRecruitment.Core.Entities.CandidateJobOffer", b =>
                 {
-                    b.HasOne("JobRecruitment.Core.Entities.JobOffer", null)
-                        .WithMany()
-                        .HasForeignKey("AppliedJobsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("JobRecruitment.Core.Entities.Candidate", "Candidate")
+                        .WithMany("AppliedJobs")
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("JobRecruitment.Core.Entities.Candidate", null)
-                        .WithMany()
-                        .HasForeignKey("CandidatesId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("JobRecruitment.Core.Entities.JobOffer", "JobOffer")
+                        .WithMany("Candidates")
+                        .HasForeignKey("JobOfferId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("Candidate");
+
+                    b.Navigation("JobOffer");
                 });
 
             modelBuilder.Entity("JobRecruitment.Core.Entities.JobOffer", b =>
@@ -383,6 +438,25 @@ namespace JobRecruitment.DAL.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Employer");
+                });
+
+            modelBuilder.Entity("JobRecruitment.Core.Entities.SavedJob", b =>
+                {
+                    b.HasOne("JobRecruitment.Core.Entities.Candidate", "Candidate")
+                        .WithMany("SavedJobs")
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("JobRecruitment.Core.Entities.JobOffer", "JobOffer")
+                        .WithMany("SavedByUsers")
+                        .HasForeignKey("JobOfferId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Candidate");
+
+                    b.Navigation("JobOffer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -439,6 +513,20 @@ namespace JobRecruitment.DAL.Migrations
             modelBuilder.Entity("JobRecruitment.Core.Entities.Category", b =>
                 {
                     b.Navigation("JobOffers");
+                });
+
+            modelBuilder.Entity("JobRecruitment.Core.Entities.JobOffer", b =>
+                {
+                    b.Navigation("Candidates");
+
+                    b.Navigation("SavedByUsers");
+                });
+
+            modelBuilder.Entity("JobRecruitment.Core.Entities.Candidate", b =>
+                {
+                    b.Navigation("AppliedJobs");
+
+                    b.Navigation("SavedJobs");
                 });
 
             modelBuilder.Entity("JobRecruitment.Core.Entities.Employer", b =>

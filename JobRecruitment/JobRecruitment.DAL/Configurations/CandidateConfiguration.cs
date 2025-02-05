@@ -8,7 +8,6 @@ public class CandidateConfiguration : IEntityTypeConfiguration<Candidate>
 {
     public void Configure(EntityTypeBuilder<Candidate> builder)
     {
-        builder.Property(x=>x.ResumeUrl).IsRequired().HasMaxLength(256);
-        builder.HasMany(x=>x.AppliedJobs).WithMany(x=>x.Candidates);
+        builder.HasMany(x=>x.AppliedJobs).WithOne(x=>x.Candidate).HasForeignKey(x=>x.CandidateId);
     }
 }

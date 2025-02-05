@@ -45,7 +45,7 @@ public class GenericRepository<T>(JobRecruitmentDbContext _context):IGenericRepo
        return await query.Select(select).ToListAsync();
     }
 
-    public async Task<IEnumerable<U>> GetAllAsync<U>(Expression<Func<T, U>> select, bool isDeleted = true)
+    public async Task<IEnumerable<U>> GetAllAsync<U>(Expression<Func<T, U>> select, bool isDeleted = false)
     {
         IQueryable<T> query = Table.Where(x => x.IsDeleted != isDeleted);
         return await query.Select(select).ToListAsync();

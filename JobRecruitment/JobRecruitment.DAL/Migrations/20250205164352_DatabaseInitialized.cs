@@ -213,24 +213,54 @@ namespace JobRecruitment.DAL.Migrations
                 name: "CandidateJobOffer",
                 columns: table => new
                 {
-                    AppliedJobsId = table.Column<int>(type: "int", nullable: false),
-                    CandidatesId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CandidateId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    JobOfferId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CandidateJobOffer", x => new { x.AppliedJobsId, x.CandidatesId });
+                    table.PrimaryKey("PK_CandidateJobOffer", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CandidateJobOffer_AspNetUsers_CandidatesId",
-                        column: x => x.CandidatesId,
+                        name: "FK_CandidateJobOffer_AspNetUsers_CandidateId",
+                        column: x => x.CandidateId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_CandidateJobOffer_JobOffers_AppliedJobsId",
-                        column: x => x.AppliedJobsId,
+                        name: "FK_CandidateJobOffer_JobOffers_JobOfferId",
+                        column: x => x.JobOfferId,
                         principalTable: "JobOffers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SavedJob",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CandidateId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    JobOfferId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SavedJob", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SavedJob_AspNetUsers_CandidateId",
+                        column: x => x.CandidateId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SavedJob_JobOffers_JobOfferId",
+                        column: x => x.JobOfferId,
+                        principalTable: "JobOffers",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -273,9 +303,14 @@ namespace JobRecruitment.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CandidateJobOffer_CandidatesId",
+                name: "IX_CandidateJobOffer_CandidateId",
                 table: "CandidateJobOffer",
-                column: "CandidatesId");
+                column: "CandidateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CandidateJobOffer_JobOfferId",
+                table: "CandidateJobOffer",
+                column: "JobOfferId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobOffers_CategoryId",
@@ -286,6 +321,16 @@ namespace JobRecruitment.DAL.Migrations
                 name: "IX_JobOffers_EmployerId",
                 table: "JobOffers",
                 column: "EmployerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SavedJob_CandidateId",
+                table: "SavedJob",
+                column: "CandidateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SavedJob_JobOfferId",
+                table: "SavedJob",
+                column: "JobOfferId");
         }
 
         /// <inheritdoc />
@@ -308,6 +353,9 @@ namespace JobRecruitment.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "CandidateJobOffer");
+
+            migrationBuilder.DropTable(
+                name: "SavedJob");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

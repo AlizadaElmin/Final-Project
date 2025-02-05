@@ -13,6 +13,7 @@
         "packagesPath": "/Users/elmin/.nuget/packages/",
         "outputPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.Core/obj/",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/elmin/.nuget/NuGet/NuGet.Config"
         ],
@@ -77,6 +78,7 @@
         "packagesPath": "/Users/elmin/.nuget/packages/",
         "outputPath": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment.DAL/obj/",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/elmin/.nuget/NuGet/NuGet.Config"
         ],

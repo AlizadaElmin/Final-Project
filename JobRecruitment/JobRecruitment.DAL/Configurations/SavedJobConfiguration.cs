@@ -8,7 +8,7 @@ public class SavedJobConfiguration:IEntityTypeConfiguration<SavedJob>
 {
     public void Configure(EntityTypeBuilder<SavedJob> builder)
     {
-        builder.HasOne(x=>x.Candidate).WithMany(y=>y.SavedJobs).HasForeignKey(x=>x.CandidateId);
-        builder.HasOne(x=>x.JobOffer).WithMany(y=>y.SavedByUsers).HasForeignKey(x=>x.JobOfferId);
+        builder.HasOne(x=>x.Candidate).WithMany(y=>y.SavedJobs).HasForeignKey(x=>x.CandidateId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x=>x.JobOffer).WithMany(y=>y.SavedByUsers).HasForeignKey(x=>x.JobOfferId).OnDelete(DeleteBehavior.NoAction);
     }
 }
