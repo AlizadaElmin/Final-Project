@@ -43,6 +43,11 @@ namespace JobRecruitment.DAL.Migrations
                     b.Property<int>("JobOfferId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ResumeUrl")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<DateTime?>("UpdatedTime")
                         .HasColumnType("datetime2");
 
@@ -381,11 +386,6 @@ namespace JobRecruitment.DAL.Migrations
             modelBuilder.Entity("JobRecruitment.Core.Entities.Candidate", b =>
                 {
                     b.HasBaseType("JobRecruitment.Core.Entities.User");
-
-                    b.Property<string>("ResumeUrl")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
 
                     b.HasDiscriminator().HasValue("Candidate");
                 });

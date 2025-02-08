@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobRecruitment.DAL.Migrations
 {
     [DbContext(typeof(JobRecruitmentDbContext))]
-    [Migration("20250205164352_DatabaseInitialized")]
-    partial class DatabaseInitialized
+    [Migration("20250208152851_DatabaseIntialized")]
+    partial class DatabaseIntialized
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,11 @@ namespace JobRecruitment.DAL.Migrations
 
                     b.Property<int>("JobOfferId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ResumeUrl")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<DateTime?>("UpdatedTime")
                         .HasColumnType("datetime2");
@@ -384,11 +389,6 @@ namespace JobRecruitment.DAL.Migrations
             modelBuilder.Entity("JobRecruitment.Core.Entities.Candidate", b =>
                 {
                     b.HasBaseType("JobRecruitment.Core.Entities.User");
-
-                    b.Property<string>("ResumeUrl")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
 
                     b.HasDiscriminator().HasValue("Candidate");
                 });

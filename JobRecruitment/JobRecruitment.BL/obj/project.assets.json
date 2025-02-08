@@ -3281,7 +3281,8 @@
     "net8.0": [
       "FluentValidation.AspNetCore >= 11.3.0",
       "JobRecruitment.DAL >= 1.0.0",
-      "Microsoft.AspNetCore.Http >= 2.3.0"
+      "Microsoft.AspNetCore.Http >= 2.3.0",
+      "Microsoft.Extensions.Options >= 8.0.2"
     ]
   },
   "packageFolders": {
@@ -3338,6 +3339,10 @@
           "Microsoft.AspNetCore.Http": {
             "target": "Package",
             "version": "[2.3.0, )"
+          },
+          "Microsoft.Extensions.Options": {
+            "target": "Package",
+            "version": "[8.0.2, )"
           }
         },
         "imports": [

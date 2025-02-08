@@ -1,3 +1,4 @@
+using JobRecruitment.BL.Extensions;
 using JobRecruitment.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseUserSeed();
 
 app.Run();
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobRecruitment.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class DatabaseInitialized : Migration
+    public partial class DatabaseIntialized : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +34,6 @@ namespace JobRecruitment.DAL.Migrations
                     LastName = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    ResumeUrl = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     CompanyName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -217,6 +216,7 @@ namespace JobRecruitment.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CandidateId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     JobOfferId = table.Column<int>(type: "int", nullable: false),
+                    ResumeUrl = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedTime = table.Column<DateTime>(type: "datetime2", nullable: true)
