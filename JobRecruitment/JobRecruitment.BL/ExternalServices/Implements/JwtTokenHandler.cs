@@ -17,7 +17,7 @@ public class JwtTokenHandler:IJwtTokenHandler
     {
         opt = _opt.Value;
     }
-    public string CreateToken(User user, int hours = 36)
+    public async Task<string> CreateToken(User user, int hours = 36)
     {
         List<Claim> claims = [
             new Claim(ClaimType.Username, user.FirstName),
