@@ -59,6 +59,5 @@ public class UserService(UserManager<User> _userManager,SignInManager<User> _sig
 
         await _jwtTokenHandler.CreateToken(user, 36);
         return true;
-
     }
 }

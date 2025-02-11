@@ -11,8 +11,6 @@ public class UserProfile:Profile
     {
         CreateMap<RegisterDto, User>();
         CreateMap<User, UserGetDto>();
-        CreateMap<User, CategoryGetDto>();
-        CreateMap<User, EmployerGetDto>();
         CreateMap<CandidateJobOfferCreateDto, CandidateJobOffer>();
     }
 }
