@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace JobRecruitment.BL.Services.Implements;
 
-public class UserService(UserManager<User> _userManager,SignInManager<User> _signInManager,IMapper _mapper,IJwtTokenHandler _jwtTokenHandler):IUserService
+public class AccountService(UserManager<User> _userManager,SignInManager<User> _signInManager,IMapper _mapper,IJwtTokenHandler _jwtTokenHandler):IAccoutService
 {
     public async Task<string> RegisterAsync(RegisterDto dto)
     {
