@@ -7,8 +7,9 @@ namespace JobRecruitment.DAL;
 public static class ServiceRegistration
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
-    {
+    { 
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICandidateJobOfferRepository, CandidateJobOfferRepository>();
         services.AddScoped<IJobOfferRepository, JobOfferRepository>();
         services.AddScoped<ISavedJobRepository, SavedJobRepository>();
         return services;

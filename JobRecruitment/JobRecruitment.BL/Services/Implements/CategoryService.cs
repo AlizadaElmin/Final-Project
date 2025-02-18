@@ -9,11 +9,9 @@ namespace JobRecruitment.BL.Services.Implements;
 
 public class CategoryService(ICategoryRepository _categoryRepository,IMapper _mapper): ICategoryService
 {
-
     public async Task CreateCategory(CategoryCreateDto dto)
     {
-        var category = _mapper.Map<Category>(dto);
-        category.IsDeleted = false;
+        Category category = _mapper.Map<Category>(dto);
         await _categoryRepository.AddAsync(category); 
         await _categoryRepository.SaveAsync();
     }
@@ -37,9 +35,9 @@ public class CategoryService(ICategoryRepository _categoryRepository,IMapper _ma
 
     public async Task UpdateCategory(int id, CategoryUpdateDto dto)
     {
-        var category = await _categoryRepository.GetByIdAsync(id, x => x);
+        var category = await _categoryRepository.GetByIdAsync(id, false);
         if (category == null)
-            throw new KeyNotFoundException("Category not found");  //exception
+            throw new Exception("Category not found");  //exception
 
         _mapper.Map(dto, category);
         await _categoryRepository.SaveAsync();

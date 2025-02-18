@@ -28,7 +28,15 @@ public class CategoryController(ICategoryService _service) : ControllerBase
         await _service.SoftDeleteCategory(id);
         return Ok();
     }
-    
+
+    [HttpPut("restore/{id}")]
+
+    public async Task<IActionResult> Restore(int id)
+    {
+        await _service.RestoreCategory(id);
+        return Ok();
+    }
+
     [HttpDelete("[action]")]
     public async Task<IActionResult> HardDeleteCategory(int id)
     {
@@ -36,11 +44,17 @@ public class CategoryController(ICategoryService _service) : ControllerBase
         return Ok();
     }
     
-    [HttpPost("{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdCategory(int id)
     {
         var category = await _service.GetByIdCategory(id);
         if (category == null) return NotFound("Category not found");
         return Ok(category);
-    } 
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var categories = await _service.GetAllCategories();
+        return Ok(categories);
+    }
 }

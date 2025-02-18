@@ -13,6 +13,7 @@ public interface IGenericRepository<T> where T : BaseEntity, new()
         bool isDeleted = true);
     Task<IEnumerable<U>> GetAllAsync<U>(Expression<Func<T, U>> select, bool isDeleted = true);
     Task<U?> GetByIdAsync<U>(int id, Expression<Func<T, U>> select, bool asNoTrack = true, bool isDeleted = true);
+    Task<T?> GetByIdAsync(int id, bool asNoTrack = true, bool isDeleted = true);
     Task<U?> GetFirstAsync<U>(Expression<Func<T, bool>> expression, Expression<Func<T, U>> select,
         bool asNoTrack = true, bool isDeleted = true);
     Task<IEnumerable<U>> GetWhereAsync<U>(Expression<Func<T, bool>> expression, Expression<Func<T, U>> select,

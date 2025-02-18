@@ -61,6 +61,18 @@ public class GenericRepository<T>(JobRecruitmentDbContext _context):IGenericRepo
         return await query.Select(select).FirstOrDefaultAsync();
     }
 
+    public async Task<T?> GetByIdAsync(int id, bool asNoTrack = true, bool isDeleted = true)
+    {
+        IQueryable<T> query = Table.Where(x => x.Id == id && x.IsDeleted != isDeleted);
+
+        if (asNoTrack)
+        {
+            query = query.AsNoTracking();
+        }
+
+        return await query.FirstOrDefaultAsync();
+    }
+
     public async Task<U?> GetFirstAsync<U>(Expression<Func<T, bool>> expression, Expression<Func<T, U>> select, bool asNoTrack = true, bool isDeleted = true)
     {
         IQueryable<T> query = Table.Where(expression).Where(x => x.IsDeleted != isDeleted);
