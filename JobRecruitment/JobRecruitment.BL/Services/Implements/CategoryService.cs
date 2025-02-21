@@ -61,7 +61,7 @@ public class CategoryService(ICategoryRepository _categoryRepository,IMapper _ma
         {
             Name = x.Name,
             JobOffers = x.JobOffers
-        }, false);
+        }, true,true);
         return categories;
     }
 

@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/iv5qnisn.pe2.pdf",
+      "PackagePath": "staticwebassets/iv5qnisn.pe2.pdf"
+    },
+    {
+      "Id": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/nkx0jzhg.xr3.pdf",
+      "PackagePath": "staticwebassets/nkx0jzhg.xr3.pdf"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.JobRecruitment.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.JobRecruitment.props",
+      "PackagePath": "build\\JobRecruitment.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.JobRecruitment.props",
+      "PackagePath": "buildMultiTargeting\\JobRecruitment.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.JobRecruitment.props",
+      "PackagePath": "buildTransitive\\JobRecruitment.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

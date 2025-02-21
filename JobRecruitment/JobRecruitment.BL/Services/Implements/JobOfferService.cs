@@ -11,7 +11,6 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
     public async Task CreateJobOffer(JobOfferCreateDto dto)
     {
         var jobOffer = _mapper.Map<JobOffer>(dto);
-        jobOffer.IsDeleted = false;
         await _jobOfferRepository.AddAsync(jobOffer); 
         await _jobOfferRepository.SaveAsync();
     }
@@ -35,7 +34,7 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
 
     public async Task UpdateJobOffer(int id, JobOfferUpdateDto dto)
     {
-        var jobOffer = await _jobOfferRepository.GetByIdAsync(id, x => x);
+        var jobOffer = await _jobOfferRepository.GetByIdAsync(id,false);
         if (jobOffer == null)
             throw new Exception("Job offer not found");  //exception
 
@@ -69,7 +68,7 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
             EmployerId = x.EmployerId,
             Candidates = x.Candidates,
             SavedByUsers = x.SavedByUsers
-        }, false);
+        }, true,true);
         return jobOffers;
     }
 

@@ -4,5 +4,5 @@ namespace JobRecruitment.BL.ExternalServices.Interfaces;
 
 public interface IJwtTokenHandler
 {
-    Task<string> CreateToken(User user,int hours);
+    string CreateToken(User user,int hours);
 }

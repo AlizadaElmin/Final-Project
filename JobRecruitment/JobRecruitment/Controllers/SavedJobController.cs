@@ -46,7 +46,7 @@ namespace JobRecruitment.Controllers
             return Ok();
         }
 
-        [HttpPost("{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var savedJob = await _service.GetByIdSavedJob(id);

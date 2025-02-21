@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobRecruitment.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class DatabaseIntialized : Migration
+    public partial class EntitiesAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,6 @@ namespace JobRecruitment.DAL.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
-                    Role = table.Column<int>(type: "int", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

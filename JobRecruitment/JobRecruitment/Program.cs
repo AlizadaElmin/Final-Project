@@ -5,13 +5,16 @@ using JobRecruitment.BL;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.DAL;
 using JobRecruitment.DAL.Context;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(); 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -54,8 +57,10 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<JobRecruitmentDbContext>();
 
+
 builder.Services.AddAuth(builder.Configuration);
-builder.Services.AddOptions(builder.Configuration);
+builder.Services.AddEmailOptions(builder.Configuration);
+builder.Services.AddJwtOptions(builder.Configuration);
 builder.Services.AddRepositories(); 
 builder.Services.AddServices();
 builder.Services.AddHttpContextAccessor();
@@ -71,11 +76,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-            
+
 app.UseHttpsRedirection();
 app.UseUserSeed();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
 

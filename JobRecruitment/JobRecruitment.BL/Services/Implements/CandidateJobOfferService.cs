@@ -17,11 +17,11 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             if (!dto.Resume.IsValidType("application/pdf"))
                 throw new Exception("Resume is not type");//exception
 
-            if (dto.Resume.IsValidSize(3))
+            if (!dto.Resume.IsValidSize(3))
                 throw new Exception("Resume is not size"); //exception
             
             string fileName = await dto.Resume.UploadFileAsync(uploadPath);
-            candidateJobOffer.ResumeUrl = Path.Combine("wwwroot","resumes",fileName);
+            candidateJobOffer.ResumeUrl = Path.Combine("wwwroot",fileName);
         }
       
         await _candidateJobOfferRepository.AddAsync(candidateJobOffer); 
@@ -40,7 +40,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
         {
             throw new Exception("CandidateJobOffer not found"); //exception
         }
-        var path = Path.Combine("wwwroot","resumes",candidateJobOffer.ResumeUrl);
+        var path = Path.Combine("wwwroot",candidateJobOffer.ResumeUrl);
         if (File.Exists(path))
             File.Delete(path);
         await _candidateJobOfferRepository.DeleteAndSaveAsync(id);
@@ -60,7 +60,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
 
     public async Task UpdateCandidateJobOffer(int id, CandidateJobOfferUpdateDto dto,string? uploadPath)
     {
-        var candidateJobOffer = await _candidateJobOfferRepository.GetByIdAsync(id, x => x);
+        var candidateJobOffer = await _candidateJobOfferRepository.GetByIdAsync(id, false);
         if (candidateJobOffer == null)
             throw new Exception("Candidate job offer not found");  //exception
 
@@ -70,7 +70,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             if (!dto.Resume.IsValidType("application/pdf"))
                 throw new Exception("Resume is not type");//exception
 
-            if (dto.Resume.IsValidSize(3))
+            if (!dto.Resume.IsValidSize(3))
                 throw new Exception("Resume is not size"); //exception
             
             string fileName = await dto.Resume.UploadFileAsync(uploadPath);
@@ -99,7 +99,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             CandidateId = x.CandidateId,
             ResumeUrl = x.ResumeUrl,
             JobOfferId = x.JobOfferId
-        }, false);
+        }, true,true);
         return candidateJobOffers;
     }
 

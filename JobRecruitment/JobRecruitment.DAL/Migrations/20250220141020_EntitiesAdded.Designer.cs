@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobRecruitment.DAL.Migrations
 {
     [DbContext(typeof(JobRecruitmentDbContext))]
-    [Migration("20250208152851_DatabaseIntialized")]
-    partial class DatabaseIntialized
+    [Migration("20250220141020_EntitiesAdded")]
+    partial class EntitiesAdded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -222,9 +222,6 @@ namespace JobRecruitment.DAL.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

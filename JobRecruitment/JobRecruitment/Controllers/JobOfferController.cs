@@ -45,7 +45,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
         return Ok();
     }
 
-    [HttpPost("{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var jobOffer = await _service.GetByIdJobOffer(id);

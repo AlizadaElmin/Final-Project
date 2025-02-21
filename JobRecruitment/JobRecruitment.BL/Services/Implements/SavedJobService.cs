@@ -36,7 +36,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
 
     public async Task UpdateSavedJob(int id, SavedJobUpdateDto dto)
     {
-        var savedJob = await _savedJobRepository.GetByIdAsync(id, x => x);
+        var savedJob = await _savedJobRepository.GetByIdAsync(id, false);
         if (savedJob == null)
             throw new Exception("Saved job not found");  //exception
 
@@ -62,7 +62,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
         {
             CandidateId = x.CandidateId,
             JobOfferId = x.JobOfferId
-        },false);
+        },true,true);
         if (savedJob == null)
             throw new Exception("Saved job not found"); //exception
         return savedJob;

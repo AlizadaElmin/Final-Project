@@ -8,8 +8,8 @@ public class CandidateJobOfferCreateDtoValidator:AbstractValidator<CandidateJobO
     public CandidateJobOfferCreateDtoValidator()
     {
         RuleFor(x => x.CandidateId)
-            .NotEmpty().WithMessage("CandidateId is required.")
-            .Matches(@"^[a-zA-Z0-9]+$").WithMessage("CandidateId must be alphanumeric.");
+            .NotEmpty().WithMessage("CandidateId is required.");
+            // .Matches(@"^[a-zA-Z0-9]+$").WithMessage("CandidateId must be alphanumeric.");
 
         RuleFor(x => x.JobOfferId)
             .NotNull().NotEmpty().WithMessage("Job offer id is required.")

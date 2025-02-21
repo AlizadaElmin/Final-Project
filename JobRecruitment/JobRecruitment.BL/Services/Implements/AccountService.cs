@@ -37,7 +37,7 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
         return user.UserName;
     } 
 
-    public async Task<bool> LoginAsync(LoginDto dto)
+    public async Task<string> LoginAsync(LoginDto dto)
     {
         User? user = null;
         if (dto.UsernameOrEmail.Contains("@"))
@@ -57,7 +57,7 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
             if(result.IsNotAllowed) throw new Exception();//exceptio
         }
 
-        await _jwtTokenHandler.CreateToken(user, 36);
-        return true;
+        var token =  _jwtTokenHandler.CreateToken(user, 36);
+        return token ;
     }
 }

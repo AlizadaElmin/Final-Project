@@ -17,15 +17,15 @@ public class JwtTokenHandler:IJwtTokenHandler
     {
         opt = _opt.Value;
     }
-    public async Task<string> CreateToken(User user, int hours = 36)
+    public string CreateToken(User user, int hours = 36)
     {
         List<Claim> claims = [
-            new Claim(ClaimType.Username, user.FirstName),
-            new Claim(ClaimType.Email, user.Email),
-            new Claim(ClaimType.Role,user.Role.ToString()),
-            new Claim(ClaimType.Id,user.Id.ToString()),
-            new Claim(ClaimType.FullName,user.FirstName + " " + user.LastName)
+            new Claim(ClaimTypes.Name, user.FirstName),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
         ];
+            // new Claim(ClaimType.Role,user.Role.ToString()),
+       
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(opt.SecretKey));
         SigningCredentials cred = new(key, SecurityAlgorithms.HmacSha256);
         JwtSecurityToken secToken = new(

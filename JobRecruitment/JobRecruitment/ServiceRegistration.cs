@@ -7,9 +7,19 @@ namespace JobRecruitment;
 
 public static class ServiceRegistration
 {
-    public static IServiceCollection AddOptions(this IServiceCollection services,IConfiguration Configuration)
+    // public static IServiceCollection AddOptions(this IServiceCollection services,IConfiguration Configuration)
+    // {
+    //     services.Configure<JwtOptions>(Configuration.GetSection(JwtOptions.Jwt));
+    //     services.Configure<EmailOptions>(Configuration.GetSection(EmailOptions.Name));
+    //     return services;
+    // }
+    public static IServiceCollection AddJwtOptions(this IServiceCollection services,IConfiguration Configuration)
     {
         services.Configure<JwtOptions>(Configuration.GetSection(JwtOptions.Jwt));
+        return services;
+    }
+    public static IServiceCollection AddEmailOptions(this IServiceCollection services,IConfiguration Configuration)
+    {
         services.Configure<EmailOptions>(Configuration.GetSection(EmailOptions.Name));
         return services;
     }

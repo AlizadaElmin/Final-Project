@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "3YKWHh0AAwP+MSV+6LVEStWdReReySl0wyJb/HCggEg=",
+  "Hash": "obtIHF09Da06XNTQwXpVXLnqiX0ul5VaJdt6KdeCq9s=",
   "Source": "JobRecruitment",
   "BasePath": "_content/JobRecruitment",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "JobRecruitment/wwwroot",
+      "Source": "JobRecruitment",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/",
+      "BasePath": "_content/JobRecruitment",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

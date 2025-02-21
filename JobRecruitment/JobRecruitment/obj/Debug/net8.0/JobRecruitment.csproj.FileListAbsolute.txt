@@ -161,3 +161,4 @@
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/bin/Debug/net8.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/bin/Debug/net8.0/Microsoft.Extensions.ObjectPool.dll
 /Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/bin/Debug/net8.0/JobRecruitment.staticwebassets.runtime.json
