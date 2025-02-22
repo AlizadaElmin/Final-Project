@@ -1,8 +1,10 @@
+using System.Linq.Expressions;
 using AutoMapper;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobRecruitment.BL.Services.Implements;
 
@@ -75,5 +77,25 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
     public async Task<IEnumerable<JobOffer>> GetAllJobOffersForAdmin()
     {
         return  await _jobOfferRepository.GetAllAsync(x => x,true);
+    }
+
+    public async Task<IEnumerable<JobOfferGetDto>> GetFilteredJobOffers(string category)
+    {
+        var query = _jobOfferRepository.GetQuery(x => new JobOfferGetDto
+        {
+            Name = x.Name,
+            Description = x.Description,
+            CategoryId = x.CategoryId,
+            Category = x.Category.Name,
+            EmployerId = x.EmployerId,
+            Candidates = x.Candidates.ToList(),
+            SavedByUsers = x.SavedByUsers.ToList()
+        },true,false);
+        if (!String.IsNullOrWhiteSpace(category))
+        {
+            query = query.Where(x => x.Category == category);
+        }
+
+        return await query.ToListAsync();
     }
 }

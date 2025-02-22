@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobRecruitment.Controllers;
+
 [Route("api/[controller]")]
 [ApiController] 
 public class JobOfferController(IJobOfferService _service) : ControllerBase
@@ -57,5 +58,11 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     { 
         var jobOffers = await _service.GetAllJobOffers(); 
         return Ok(jobOffers);
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> FilterJobs(string category)
+    {
+      return Ok( await  _service.GetFilteredJobOffers(category));
     }
 }

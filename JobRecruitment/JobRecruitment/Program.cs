@@ -58,15 +58,16 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<JobRecruitmentDbContext>();
 
 
-builder.Services.AddAuth(builder.Configuration);
-builder.Services.AddEmailOptions(builder.Configuration);
-builder.Services.AddJwtOptions(builder.Configuration);
+
 builder.Services.AddRepositories(); 
 builder.Services.AddServices();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddFluentValidation();
 builder.Services.AddAutoMapper();
 builder.Services.AddMemoryCache();
+builder.Services.AddEmailOptions(builder.Configuration);
+builder.Services.AddJwtOptions(builder.Configuration);
+builder.Services.AddAuth(builder.Configuration);
 
 
 var app = builder.Build();
@@ -74,12 +75,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(opt =>
+    {
+        opt.EnablePersistAuthorization();
+    });
 }
 
 app.UseHttpsRedirection();
 app.UseUserSeed();
-app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

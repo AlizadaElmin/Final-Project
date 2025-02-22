@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JobRecruitment.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51c09a54bfbe3e72594bea6256057a42fdb62035")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1ac6584d347c65796955caf48c8b674e95ac0c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("JobRecruitment.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JobRecruitment.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

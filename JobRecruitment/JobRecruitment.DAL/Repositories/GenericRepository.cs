@@ -124,4 +124,25 @@ public class GenericRepository<T>(JobRecruitmentDbContext _context):IGenericRepo
         var entity =  await Table.FindAsync(id);
         entity!.IsDeleted = true;
     }
+    public IQueryable<U> GetQuery<U>(
+        Expression<Func<T, U>> selector,
+        bool includeDeleted = false,
+        bool asNoTracking = true)
+    {
+        var query = Table.AsQueryable();
+
+        if (!includeDeleted)
+        {
+            query = query.Where(x => !x.IsDeleted);
+        }
+
+        if (asNoTracking)
+        {
+            query = query.AsNoTracking();
+        }
+
+        return query.Select(selector);
+    }
+
+    
 }

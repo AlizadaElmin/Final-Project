@@ -25,5 +25,9 @@ public interface IGenericRepository<T> where T : BaseEntity, new()
     Task<int> SaveAsync();
     void SoftDelete(T entity);
     Task SoftDeleteAsync(int id);
-    
+
+    IQueryable<U> GetQuery<U>(
+        Expression<Func<T, U>> selector,
+        bool includeDeleted = false,
+        bool asNoTracking = true);
 }

@@ -12,25 +12,25 @@ namespace JobRecruitment.BL.ExternalServices.Implements;
 
 public class JwtTokenHandler:IJwtTokenHandler
 {
-    readonly JwtOptions opt;
-    public JwtTokenHandler(IOptions<JwtOptions> _opt)
+    readonly JwtOptions _opt;
+    public JwtTokenHandler(IOptions<JwtOptions> opt)
     {
-        opt = _opt.Value;
+        _opt = opt.Value;
     }
     public string CreateToken(User user, int hours = 36)
     {
         List<Claim> claims = [
             new Claim(ClaimTypes.Name, user.FirstName),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
         ];
-            // new Claim(ClaimType.Role,user.Role.ToString()),
+            // new Claim(ClaimType.Role,user.Role)
        
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(opt.SecretKey));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_opt.SecretKey));
         SigningCredentials cred = new(key, SecurityAlgorithms.HmacSha256);
         JwtSecurityToken secToken = new(
-            issuer: opt.Issuer,
-            audience: opt.Audience,
+            issuer: _opt.Issuer,
+            audience: _opt.Audience,
             claims: claims,
             notBefore: DateTime.Now,
             expires: DateTime.Now.AddHours(hours),

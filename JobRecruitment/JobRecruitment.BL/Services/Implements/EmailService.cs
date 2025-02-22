@@ -33,9 +33,9 @@ public class EmailService:IEmailService
         _context = context;
     }
     public async Task SendEmail()
-    {
-      string? email = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-      string? name = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
+    { 
+        string? email = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value; 
+        string? name = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
 
       if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(name))
           throw new UnauthorizedAccessException("User is not authenticated");

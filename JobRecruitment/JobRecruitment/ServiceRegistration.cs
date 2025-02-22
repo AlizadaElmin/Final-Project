@@ -31,7 +31,12 @@ public static class ServiceRegistration
         jwtOpt.Audience = Configuration.GetRequiredSection("JwtOptions")["Audience"]!;
         jwtOpt.SecretKey = Configuration.GetRequiredSection("JwtOptions")["SecretKey"]!;
         var signInKey  = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOpt.SecretKey));
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        services.AddAuthentication(opt=>
+            {
+                opt.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme=JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+            })
             .AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new TokenValidationParameters
@@ -48,7 +53,7 @@ public static class ServiceRegistration
                     
                 };
             });
-        
+        services.AddAuthorization();
         return services;
     }
 }

@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JobRecruitment.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class AuthController(IEmailService _service) : ControllerBase
     {
+        [Authorize]
         [HttpPost("[action]")]
         public async Task<IActionResult> SendMail()
         {
