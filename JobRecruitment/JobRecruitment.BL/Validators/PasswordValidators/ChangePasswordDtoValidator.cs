@@ -9,18 +9,19 @@ public class ChangePasswordDtoValidator : AbstractValidator<ChangePasswordDto>
     public ChangePasswordDtoValidator()
     {
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("E-posta adresi zorunludur.")
-            .EmailAddress().WithMessage("Geçerli bir e-posta adresi giriniz.");
+            .NotEmpty().WithMessage("Email address is required.")
+            .EmailAddress().WithMessage("Please enter a valid email address.");
 
         RuleFor(x => x.OldPassword)
-            .NotEmpty().WithMessage("Mevcut şifre zorunludur.");
+            .NotEmpty().WithMessage("Current password is required.");
 
         RuleFor(x => x.NewPassword)
-            .NotEmpty().WithMessage("Yeni şifre zorunludur.")
-            .MinimumLength(8).WithMessage("Şifre en az 6 karakter olmalıdır.")
-            .Matches("[A-Z]").WithMessage("Şifre en az bir büyük harf içermelidir.")
-            .Matches("[a-z]").WithMessage("Şifre en az bir küçük harf içermelidir.")
-            .Matches("[0-9]").WithMessage("Şifre en az bir rakam içermelidir.")
-            .Matches("[^a-zA-Z0-9]").WithMessage("Şifre en az bir özel karakter içermelidir.");
+            .NotEmpty().WithMessage("New password is required.")
+            .MinimumLength(6).WithMessage("Password must be at least 6 characters long.")
+            .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
+            .Matches("[a-z]").WithMessage("Password must contain at least one lowercase letter.")
+            .Matches("[0-9]").WithMessage("Password must contain at least one number.")
+            .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character.");
+
     }
 }

@@ -9,18 +9,19 @@ public class ResetPasswordDtoValidator: AbstractValidator<ResetPasswordDto>
     public ResetPasswordDtoValidator()
     {
         RuleFor(x => x.Token)
-            .NotEmpty().WithMessage("Token gereklidir.");
+            .NotEmpty().WithMessage("Token is required.");
 
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("Email adresi gereklidir.")
-            .EmailAddress().WithMessage("Geçerli bir email adresi giriniz.");
+            .NotEmpty().WithMessage("Email address is required.")
+            .EmailAddress().WithMessage("Please enter a valid email address.");
 
         RuleFor(x => x.NewPassword)
-            .NotEmpty().WithMessage("Yeni şifre gereklidir.")
-            .MinimumLength(6).WithMessage("Şifre en az 6 karakter olmalıdır.");
+            .NotEmpty().WithMessage("New password is required.")
+            .MinimumLength(6).WithMessage("Password must be at least 6 characters long.");
 
         RuleFor(x => x.ConfirmPassword)
-            .NotEmpty().WithMessage("Şifre onayı gereklidir.")
-            .Equal(x => x.NewPassword).WithMessage("Şifreler eşleşmiyor.");
+            .NotEmpty().WithMessage("Password confirmation is required.")
+            .Equal(x => x.NewPassword).WithMessage("Passwords do not match.");
+
     }
 }

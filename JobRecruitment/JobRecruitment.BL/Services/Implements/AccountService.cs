@@ -13,8 +13,8 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
 {
     public async Task<string> RegisterAsync(RegisterDto dto)
     {
-        if (await _userManager.FindByEmailAsync(dto.Email) != null) throw new Exception(); //
-        if (await _userManager.FindByNameAsync(dto.Username) != null)throw new Exception(); //
+        if (await _userManager.FindByEmailAsync(dto.Email) != null) throw new Exception("The email address is already taken."); 
+        if (await _userManager.FindByNameAsync(dto.Username) != null)throw new Exception("The username is already taken."); 
      
         User user = _mapper.Map<User>(dto);
         var result = await _userManager.CreateAsync(user, dto.Password);
