@@ -2,6 +2,7 @@ using AutoMapper;
 using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 using JobRecruitment.BL.Extensions;
+using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Enums;
@@ -9,8 +10,9 @@ using JobRecruitment.Core.Repositories;
 
 namespace JobRecruitment.BL.Services.Implements;
 
-public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJobOfferRepository,IJobOfferRepository _jobOfferRepository,IMapper _mapper): ICandidateJobOfferService
+public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJobOfferRepository,IJobOfferRepository _jobOfferRepository,IMapper _mapper,ICurrentUser _user): ICandidateJobOfferService
 {
+    private string _userId = _user.GetId().ToString();
     public async Task CreateCandidateJobOffer(CandidateJobOfferCreateDto dto,string uploadPath)
     {
         var jobOffer = _jobOfferRepository.GetByIdAsync(dto.JobOfferId);
@@ -19,6 +21,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             throw new ApplicationException("Job offer status is not active");
         
         var candidateJobOffer = _mapper.Map<CandidateJobOffer>(dto);
+        candidateJobOffer.CandidateId = _userId;
         if (dto.Resume != null)
         {
             if (!dto.Resume.IsValidType("application/pdf"))
@@ -77,6 +80,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             throw new Exception("Candidate job offer not found");  //exception
 
         _mapper.Map(dto, candidateJobOffer);
+        candidateJobOffer.CandidateId = _userId;
         if (dto.Resume != null)
         {
             if (!dto.Resume.IsValidType("application/pdf"))

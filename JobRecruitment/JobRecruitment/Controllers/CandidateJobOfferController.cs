@@ -14,7 +14,6 @@ namespace JobRecruitment.Controllers
     public class CandidateJobOfferController(ICandidateJobOfferService _service, IWebHostEnvironment _env) : ControllerBase
     {
         [HttpPost]
-        
         public async Task<IActionResult> Create(CandidateJobOfferCreateDto dto)
         {
             string destination = _env.WebRootPath;

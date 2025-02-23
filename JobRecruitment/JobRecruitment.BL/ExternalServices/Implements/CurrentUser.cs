@@ -31,12 +31,12 @@ public class CurrentUser(IHttpContextAccessor _httpContext,
         return value;
     }
 
-    public int GetId()
+    public string GetId()
     {
         var value = User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
         if (value is null)
             throw new Exception("User does not exist");
-        return Convert.ToInt32(value);
+        return value;
     }
 
     public int GetRole()

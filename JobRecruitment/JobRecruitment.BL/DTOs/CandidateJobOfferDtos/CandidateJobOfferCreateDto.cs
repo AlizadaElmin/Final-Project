@@ -5,7 +5,6 @@ namespace JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 
 public class CandidateJobOfferCreateDto
 {
-    public string CandidateId { get; set; } 
     public int JobOfferId { get; set; }  
     public IFormFile Resume { get; set; }  
 }

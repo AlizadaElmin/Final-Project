@@ -33,41 +33,41 @@ public class EmailService:IEmailService
         _cache = cache;
         _context = context;
     }
-    public async Task SendEmailAsync(string reason,string? email,string? forgotToken)
+    public async Task SendEmailAsync(string reason, string email, string? forgotToken)
     {
         string token = null;
         if (reason == "confirmation")
         { 
-            token = Guid.NewGuid().ToString();
-            email = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            string? name = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentException("Email cannot be null for confirmation.");
 
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(name))
-                throw new UnauthorizedAccessException("User is not authenticated");
-            
-            _cache.Set(email,token,TimeSpan.FromMinutes(30));
-       
+            token = Guid.NewGuid().ToString();
+            _cache.Set(email, token, TimeSpan.FromMinutes(30));
         }
         else if (reason == "forgotPassword")
         {
-            _cache.Set(email,forgotToken,TimeSpan.FromMinutes(30));
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(forgotToken))
+                throw new ArgumentException("Email and forgotToken cannot be null for forgotPassword.");
+            
+            _cache.Set(email, forgotToken, TimeSpan.FromMinutes(30));
         }
 
-        
-      using (SmtpClient client = new SmtpClient(_opt.Host, _opt.Port))
-      {
-          client.Credentials = new NetworkCredential(_opt.Sender,_opt.Password);
-          client.EnableSsl = true;
-          client.UseDefaultCredentials = false;
-          MailAddress to = new MailAddress(email);
-          MailMessage message = new(_from,to);
-          message.Subject = "Job Recruitment";
-            message.Body = reason == "confirmation" 
-              ? $"Salam aleykum, confirmation token: {token}" 
-              : $"Salam aleykum, forgot token: {forgotToken}";
-        
-          await client.SendMailAsync(message);
-      }
+        using (SmtpClient client = new SmtpClient(_opt.Host, _opt.Port))
+        {
+            client.Credentials = new NetworkCredential(_opt.Sender, _opt.Password);
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+
+            MailAddress to = new MailAddress(email);
+            MailMessage message = new(_from, to);
+            message.Subject = "Job Recruitment";
+            message.Body = reason == "confirmation"
+                ? $"Salam aleykum, confirmation token: {token}"
+                : $"Salam aleykum, forgot token: {forgotToken}";
+
+            await client.SendMailAsync(message);
+        }
     }
+
 
 }

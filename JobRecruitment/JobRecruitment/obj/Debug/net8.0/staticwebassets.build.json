@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CJbHkaB7RA0ZnxTwhoD2Zl5QzhZpQ+rWndaVHXMVvyQ=",
+  "Hash": "XaRU0bLnQ/9hxTVdrzZ/26htKsSWIwLj6U2sG8ttQCE=",
   "Source": "JobRecruitment",
   "BasePath": "_content/JobRecruitment",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/h1xwqjdd.3he.pdf"
+    },
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/m2cl5eaq.mnj.pdf",
+      "SourceId": "JobRecruitment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/",
+      "BasePath": "_content/JobRecruitment",
+      "RelativePath": "m2cl5eaq.mnj.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/m2cl5eaq.mnj.pdf"
     },
     {
       "Identity": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/rj4qqjyz.2xo.pdf",

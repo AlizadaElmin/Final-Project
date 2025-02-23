@@ -4,7 +4,7 @@ namespace JobRecruitment.BL.ExternalServices.Interfaces;
 
 public interface ICurrentUser
 {
-    int GetId();
+    string GetId();
     string GetUserName();
     string GetEmail();
     string GetName();
