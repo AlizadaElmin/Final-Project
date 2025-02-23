@@ -1,6 +1,7 @@
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.DTOs.SavedJobDtos;
 using JobRecruitment.BL.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace JobRecruitment.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class SavedJobController(ISavedJobService _service) : ControllerBase
 { 
     [HttpPost] 

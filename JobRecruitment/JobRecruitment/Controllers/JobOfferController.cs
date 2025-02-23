@@ -10,10 +10,11 @@ namespace JobRecruitment.Controllers;
 
 [Route("api/[controller]")]
 [ApiController] 
-[Authorize(Roles =nameof(UserRole.Employer))]
+
 public class JobOfferController(IJobOfferService _service) : ControllerBase
 { 
     [HttpPost]
+    [Authorize(Roles =nameof(UserRole.Employer))]
     public async Task<IActionResult> Create(JobOfferCreateDto dto)
     { 
         await _service.CreateJobOffer(dto); 
@@ -21,6 +22,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles =nameof(UserRole.Employer))]
     public async Task<IActionResult> Update(int id, JobOfferUpdateDto dto)
     {
         await _service.UpdateJobOffer(id, dto);
@@ -28,6 +30,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles =nameof(UserRole.Employer))]
     public async Task<IActionResult> SoftDelete(int id)
     {
         await _service.SoftDeleteJobOffer(id);
@@ -35,7 +38,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpPut("restore/{id}")]
-
+    [Authorize(Roles =nameof(UserRole.Employer))]
     public async Task<IActionResult> Restore(int id)
     { 
         await _service.RestoreJobOffer(id); 
@@ -43,6 +46,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpDelete("[action]")]
+    [Authorize(Roles =nameof(UserRole.Employer))]
     public async Task<IActionResult> HardDelete(int id)
     {
         await _service.HardDeleteJobOffer(id);
@@ -50,6 +54,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     public async Task<IActionResult> GetById(int id)
     {
         var jobOffer = await _service.GetByIdJobOffer(id);
@@ -57,6 +62,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
         return Ok(jobOffer);
     }
     [HttpGet] 
+    [Authorize]
     public async Task<IActionResult> GetAll() 
     { 
         var jobOffers = await _service.GetAllJobOffers(); 
@@ -64,6 +70,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpPost("[action]")]
+    [Authorize]
     public async Task<IActionResult> FilterJobs(string? category,decimal? minSalary, decimal? maxSalary)
     {
       return Ok( await  _service.GetFilteredJobOffers(category,minSalary,maxSalary));
@@ -71,12 +78,14 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     
     
     [HttpPost("[action]")]
+    [Authorize]
     public async Task<IActionResult> SearchJobs(string name)
     {
         return Ok( await  _service.GetSearchedJobOffers(name));
     }
 
     [HttpPost("[action]")]
+    [Authorize]
     public async Task<IActionResult> UpdateJobOfferStatus(int jobOfferId)
     {
        await _service.UpdateJobOfferStatusAsync(jobOfferId);
