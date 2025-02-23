@@ -1,3 +1,4 @@
+using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 using JobRecruitment.Core.Entities;
 

@@ -12,5 +12,7 @@ public interface IJobOfferService
     Task UpdateJobOffer(int id,JobOfferUpdateDto dto);
     Task<JobOfferGetDto?> GetByIdJobOffer(int id);
     Task<IEnumerable<JobOfferGetDto>> GetAllJobOffers();
-    Task<IEnumerable<JobOfferGetDto>> GetFilteredJobOffers(string category);
+    Task<IEnumerable<JobOfferGetDto>> GetFilteredJobOffers(string category, int? minSalary, int? maxSalary);
+    Task<IEnumerable<JobOfferGetDto>> GetSearchedJobOffers(string name);
+    Task UpdateJobOfferStatusAsync(int jobOfferId);
 }

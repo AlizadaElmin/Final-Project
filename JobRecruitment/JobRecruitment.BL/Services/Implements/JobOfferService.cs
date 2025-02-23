@@ -3,6 +3,7 @@ using AutoMapper;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
+using JobRecruitment.Core.Enums;
 using JobRecruitment.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -79,9 +80,9 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
         return  await _jobOfferRepository.GetAllAsync(x => x,true);
     }
 
-    public async Task<IEnumerable<JobOfferGetDto>> GetFilteredJobOffers(string category)
+    private IQueryable<JobOfferGetDto> getQueryable()
     {
-        var query = _jobOfferRepository.GetQuery(x => new JobOfferGetDto
+        return _jobOfferRepository.GetQuery(x => new JobOfferGetDto
         {
             Name = x.Name,
             Description = x.Description,
@@ -91,11 +92,51 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
             Candidates = x.Candidates.ToList(),
             SavedByUsers = x.SavedByUsers.ToList()
         },true,false);
+    }
+    
+    public async Task<IEnumerable<JobOfferGetDto>> GetFilteredJobOffers(string category,int? minSalary,int? maxSalary )
+    {
+       var query = getQueryable();
         if (!String.IsNullOrWhiteSpace(category))
         {
-            query = query.Where(x => x.Category == category);
+            query = query.Where(x => x.Category == category && x.Status == JobOfferStatus.Active);
+        }
+
+        if (minSalary.HasValue)
+        {
+            query = query.Where(x=>x.MinSalary >= minSalary);
+        }
+
+        if (maxSalary.HasValue)
+        {
+            query = query.Where(x=>x.MaxSalary <= maxSalary);
+        }
+        return await query.ToListAsync();
+    }
+    
+    public async Task<IEnumerable<JobOfferGetDto>> GetSearchedJobOffers(string name)
+    {     
+        var query = getQueryable();
+       
+        if (!String.IsNullOrWhiteSpace(name))
+        {
+            query = query.Where(x => (x.Name.ToLower().Contains(name.ToLower()) || name.ToLower().Contains(x.Name.ToLower())) && x.Status == JobOfferStatus.Active);
         }
 
         return await query.ToListAsync();
+    }
+
+    public async Task UpdateJobOfferStatusAsync(int jobOfferId)
+    {
+        var jobOffer = await _jobOfferRepository.GetByIdAsync(jobOfferId);
+
+        if (jobOffer != null)
+        {
+            if (jobOffer.ExpiryDate < DateTime.Now)
+            {
+                jobOffer.Status = JobOfferStatus.Expired;
+            }
+            await _jobOfferRepository.SaveAsync();
+        }
     }
 }

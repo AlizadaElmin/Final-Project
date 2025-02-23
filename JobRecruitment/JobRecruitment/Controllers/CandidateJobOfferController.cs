@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Runtime.InteropServices;
+using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 
 namespace JobRecruitment.Controllers
 {

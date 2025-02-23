@@ -20,7 +20,7 @@ public class JwtTokenHandler:IJwtTokenHandler
     public string CreateToken(User user, int hours = 36)
     {
         List<Claim> claims = [
-            new Claim(ClaimTypes.Name, user.FirstName),
+            new Claim(ClaimTypes.Name, user.Fullname),
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.NameIdentifier, user.Id),
         ];

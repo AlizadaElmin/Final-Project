@@ -8,21 +8,14 @@ namespace JobRecruitment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController(IEmailService _service) : ControllerBase
+    public class AuthController(IEmailService _emailService,IAccountVerifyService _verifyService) : ControllerBase
     {
         [Authorize]
         [HttpPost("[action]")]
-        public async Task<IActionResult> SendMail()
+        public async Task<IActionResult> Verify(string token)
         {
-            await _service.SendEmail();
-            return Content("Email sent");
+            await _verifyService.AccountVerify(token);
+            return Content("Email confirmed");
         }
-        
-        // [HttpPost("[action]")]
-        // public async Task<IActionResult> Verify(string token)
-        // {
-        //     await _service.AccountVerify(token);
-        //     return Content("Email confirmed");
-        // }
     }
 }

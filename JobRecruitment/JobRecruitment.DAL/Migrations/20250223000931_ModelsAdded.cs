@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobRecruitment.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class EntitiesAdded : Migration
+    public partial class ModelsAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,8 +30,7 @@ namespace JobRecruitment.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
+                    Fullname = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -184,6 +183,10 @@ namespace JobRecruitment.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    MinSalary = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    MaxSalary = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     EmployerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),

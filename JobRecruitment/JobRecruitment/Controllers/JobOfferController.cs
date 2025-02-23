@@ -1,6 +1,7 @@
 using JobRecruitment.BL.DTOs.CategoryDtos;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.Services.Interfaces;
+using JobRecruitment.Core.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,8 +62,24 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> FilterJobs(string category)
+    public async Task<IActionResult> FilterJobs(string category,int? minSalary, int? maxSalary)
     {
-      return Ok( await  _service.GetFilteredJobOffers(category));
+      return Ok( await  _service.GetFilteredJobOffers(category,minSalary,maxSalary));
+    }
+    
+    
+    [HttpPost("[action]")]
+    public async Task<IActionResult> SearchJobs(string name)
+    {
+        return Ok( await  _service.GetSearchedJobOffers(name));
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> UpdateJobOfferStatus(int jobOfferId)
+    {
+       await _service.UpdateJobOfferStatusAsync(jobOfferId);
+        return Ok();
     }
 }
+
+

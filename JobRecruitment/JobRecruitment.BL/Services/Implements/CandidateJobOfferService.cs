@@ -1,16 +1,23 @@
 using AutoMapper;
+using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 using JobRecruitment.BL.Extensions;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
+using JobRecruitment.Core.Enums;
 using JobRecruitment.Core.Repositories;
 
 namespace JobRecruitment.BL.Services.Implements;
 
-public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJobOfferRepository,IMapper _mapper): ICandidateJobOfferService
+public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJobOfferRepository,IJobOfferRepository _jobOfferRepository,IMapper _mapper): ICandidateJobOfferService
 {
     public async Task CreateCandidateJobOffer(CandidateJobOfferCreateDto dto,string uploadPath)
     {
+        var jobOffer = _jobOfferRepository.GetByIdAsync(dto.JobOfferId);
+        
+        if((int)jobOffer.Status != (int)JobOfferStatus.Active)
+            throw new ApplicationException("Job offer status is not active");
+        
         var candidateJobOffer = _mapper.Map<CandidateJobOffer>(dto);
         if (dto.Resume != null)
         {
@@ -60,6 +67,11 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
 
     public async Task UpdateCandidateJobOffer(int id, CandidateJobOfferUpdateDto dto,string? uploadPath)
     {
+        var jobOffer = _jobOfferRepository.GetByIdAsync(dto.JobOfferId);
+        
+        if((int)jobOffer.Status != (int)JobOfferStatus.Active)
+            throw new ApplicationException("Job offer status is not active");
+
         var candidateJobOffer = await _candidateJobOfferRepository.GetByIdAsync(id, false);
         if (candidateJobOffer == null)
             throw new Exception("Candidate job offer not found");  //exception

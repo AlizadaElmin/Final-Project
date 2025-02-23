@@ -20,13 +20,9 @@ public class RegisterDtoValidator: AbstractValidator<RegisterDto>
             .NotEmpty().WithMessage("Password is required.")
             .MinimumLength(6).WithMessage("Password must be at least 6 characters long.");
 
-        RuleFor(x => x.Firstname)
-            .NotEmpty().WithMessage("Firstname is required.")
-            .MaximumLength(16).WithMessage("Firstname cannot exceed 16 characters.");
-
-        RuleFor(x => x.Lastname)
-            .NotEmpty().WithMessage("Lastname is required.")
-            .MaximumLength(16).WithMessage("Lastname cannot exceed 16 characters.");
+        RuleFor(x => x.Fullname)
+            .NotEmpty().WithMessage("Fullname is required.")
+            .MaximumLength(32).WithMessage("Fullname cannot exceed 32 characters.");
 
         RuleFor(x => x.IsMale)
             .NotNull().WithMessage("Gender selection is required.");

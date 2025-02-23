@@ -1,4 +1,4 @@
-namespace JobRecruitment.BL.DTOs.UserDtos;
+namespace JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 
 public class CandidateJobOfferGetDto
 {

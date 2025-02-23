@@ -1,4 +1,5 @@
 using FluentValidation;
+using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 
 namespace JobRecruitment.BL.Validators.UserValidators;

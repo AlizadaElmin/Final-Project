@@ -16,6 +16,7 @@ public static class ServiceRegistration
         services.AddScoped<IAccoutService, AccountService>();
         services.AddScoped<ICandidateJobOfferService, CandidateJobOfferService>();
         services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IAccountVerifyService, AccountVerifyService>();
         services.AddScoped<IJobOfferService, JobOfferService>();
         services.AddScoped<ISavedJobService, SavedJobService>();
         services.AddScoped<IJwtTokenHandler, JwtTokenHandler>();

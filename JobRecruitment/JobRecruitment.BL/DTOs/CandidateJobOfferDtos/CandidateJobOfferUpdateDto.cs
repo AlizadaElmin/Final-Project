@@ -1,6 +1,7 @@
+using JobRecruitment.Core.Entities;
 using Microsoft.AspNetCore.Http;
 
-namespace JobRecruitment.BL.DTOs.UserDtos;
+namespace JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 
 public class CandidateJobOfferUpdateDto
 {

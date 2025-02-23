@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Security.Claims;
 using JobRecruitment.BL.Constants;
 using JobRecruitment.BL.DTOs.Options;
+using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Enums;
@@ -57,22 +58,4 @@ public class EmailService:IEmailService
       }
     }
 
-    public async Task AccountVerify(string userToken)
-    {
-        string? name = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
-
-        var cacheToken = _cache.Get<string>(name);
-        if (string.IsNullOrEmpty(userToken) || string.IsNullOrEmpty(name))
-            throw new UnauthorizedAccessException("User is not authenticated or token is missing.");
-        
-        // if (!(cacheToken != null && cacheToken == userToken))
-            //throw new NotFoundException<User>(); //Exception
-            
-        User? user = await _userManager.FindByNameAsync(name);
-        var roles = await _userManager.GetRolesAsync(user);
-        await _userManager.RemoveFromRolesAsync(user, roles);
-        var role = nameof(UserRole.Employer);
-        await _userManager.AddToRoleAsync(user, role);
-        await _context.SaveChangesAsync();
-    }   
 }
