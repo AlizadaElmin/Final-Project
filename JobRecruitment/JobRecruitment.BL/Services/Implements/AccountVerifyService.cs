@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using JobRecruitment.BL.Exceptions.UserException;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Enums;
@@ -29,10 +30,10 @@ public class AccountVerifyService:IAccountVerifyService
         User user = await _userManager.FindByEmailAsync(email);
         var cacheToken = _cache.Get<string>(email);
         if (string.IsNullOrEmpty(userToken) || string.IsNullOrEmpty(cacheToken))
-            throw new UnauthorizedAccessException("User is not authenticated or token is missing.");
+            throw new TokenVerificationException();
         
         if (cacheToken != userToken)
-            throw new Exception("Cache is null"); //Exception
+            throw new TokenVerificationException("Provided token does not match the cached token.");
             
         var roles = await _userManager.GetRolesAsync(user);
         await _userManager.RemoveFromRolesAsync(user, roles);

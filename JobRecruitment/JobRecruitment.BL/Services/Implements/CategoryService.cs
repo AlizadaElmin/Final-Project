@@ -1,5 +1,6 @@
 using AutoMapper;
 using JobRecruitment.BL.DTOs.CategoryDtos;
+using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Repositories;
@@ -37,7 +38,7 @@ public class CategoryService(ICategoryRepository _categoryRepository,IMapper _ma
     {
         var category = await _categoryRepository.GetByIdAsync(id, false);
         if (category == null)
-            throw new Exception("Category not found");  //exception
+            throw new NotFoundException<Category>();
 
         _mapper.Map(dto, category);
         await _categoryRepository.SaveAsync();
@@ -51,7 +52,7 @@ public class CategoryService(ICategoryRepository _categoryRepository,IMapper _ma
             JobOffers = x.JobOffers
         });
         if (category == null)
-            throw new Exception("Category not found"); //exception
+            throw new NotFoundException<Category>();
         return category;
     }
 

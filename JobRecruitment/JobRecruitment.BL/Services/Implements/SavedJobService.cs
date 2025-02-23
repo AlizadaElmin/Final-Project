@@ -1,6 +1,7 @@
 using AutoMapper;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.DTOs.SavedJobDtos;
+using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
@@ -39,7 +40,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
     {
         var savedJob = await _savedJobRepository.GetByIdAsync(id, false);
         if (savedJob == null)
-            throw new Exception("Saved job not found");  //exception
+            throw new NotFoundException<SavedJob>();
 
         _mapper.Map(dto, savedJob);
         savedJob.CandidateId = _user.GetId();
@@ -54,7 +55,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
             JobOfferId = x.JobOfferId,
         });
         if (savedJob == null)
-            throw new Exception("Saved job not found"); //exception
+            throw new NotFoundException<SavedJob>();
         return savedJob;
     }
 
@@ -66,7 +67,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
             JobOfferId = x.JobOfferId,
         },true,true);
         if (savedJob == null)
-            throw new Exception("Saved job not found"); //exception
+            throw new NotFoundException<SavedJob>();
         return savedJob;
     }
 

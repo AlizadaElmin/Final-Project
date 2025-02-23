@@ -1,5 +1,6 @@
 using AutoMapper;
 using JobRecruitment.BL.DTOs.UserDtos;
+using JobRecruitment.BL.Exceptions.UserException;
 using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
@@ -50,13 +51,13 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
         {
              user =await _userManager.FindByNameAsync(dto.UsernameOrEmail);
         }
-        if(user==null) throw new Exception();//exceptio
+        if(user==null) throw new UserNotFoundException("User not found.");
         
         var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password,false);
         if (!result.Succeeded)
         {
-            if(result.IsLockedOut) throw new Exception();//exceptio
-            if(result.IsNotAllowed) throw new Exception();//exceptio
+            if(result.IsLockedOut) throw new AccountLockedException(user.LockoutEnd!.Value);
+            if(result.IsNotAllowed) throw new LoginFailedException("Username or password is incorrect.");
         }
 
         var token =  await _jwtTokenHandler.CreateToken(user, 36);

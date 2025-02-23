@@ -4,6 +4,7 @@ using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.DTOs.SavedJobDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
+using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
@@ -44,7 +45,7 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
     {
         var jobOffer = await _jobOfferRepository.GetByIdAsync(id,false);
         if (jobOffer == null)
-            throw new Exception("Job offer not found");  //exception
+            throw new NotFoundException<JobOffer>();
 
         _mapper.Map(dto, jobOffer);
         jobOffer.EmployerId = _user.GetId();
@@ -76,7 +77,7 @@ public class JobOfferService(IJobOfferRepository _jobOfferRepository,IMapper _ma
             })
         });
         if (jobOffer == null)
-            throw new Exception("Job Offer not found"); //exception
+            throw new NotFoundException<JobOffer>();
         return jobOffer;
     }
 

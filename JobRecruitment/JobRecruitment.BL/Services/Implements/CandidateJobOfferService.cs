@@ -1,6 +1,8 @@
 using AutoMapper;
 using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
+using JobRecruitment.BL.Exceptions.CandidateJobOfferException;
+using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.Extensions;
 using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.BL.Services.Interfaces;
@@ -18,17 +20,17 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
         var jobOffer = _jobOfferRepository.GetByIdAsync(dto.JobOfferId);
         
         if((int)jobOffer.Status != (int)JobOfferStatus.Active)
-            throw new ApplicationException("Job offer status is not active");
+            throw new JobOfferNotActiveException();
         
         var candidateJobOffer = _mapper.Map<CandidateJobOffer>(dto);
         candidateJobOffer.CandidateId = _userId;
         if (dto.Resume != null)
         {
             if (!dto.Resume.IsValidType("application/pdf"))
-                throw new Exception("Resume is not type");//exception
+                throw new InvalidResumeTypeException();
 
             if (!dto.Resume.IsValidSize(3))
-                throw new Exception("Resume is not size"); //exception
+                throw new InvalidResumeSizeException();
             
             string fileName = await dto.Resume.UploadFileAsync(uploadPath);
             candidateJobOffer.ResumeUrl = Path.Combine("wwwroot",fileName);
@@ -48,7 +50,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
         });
         if (candidateJobOffer == null)
         {
-            throw new Exception("CandidateJobOffer not found"); //exception
+            throw new NotFoundException<CandidateJobOffer>();
         }
         var path = Path.Combine("wwwroot",candidateJobOffer.ResumeUrl);
         if (File.Exists(path))
@@ -75,21 +77,21 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
         var jobOffer = _jobOfferRepository.GetByIdAsync(dto.JobOfferId);
         
         if((int)jobOffer.Status != (int)JobOfferStatus.Active)
-            throw new ApplicationException("Job offer status is not active");
-
+            throw new JobOfferNotActiveException();
+        
         var candidateJobOffer = await _candidateJobOfferRepository.GetByIdAsync(id, false);
         if (candidateJobOffer == null)
-            throw new Exception("Candidate job offer not found");  //exception
+            throw new NotFoundException<CandidateJobOffer>();
 
         _mapper.Map(dto, candidateJobOffer);
         candidateJobOffer.CandidateId = _userId;
         if (dto.Resume != null)
         {
             if (!dto.Resume.IsValidType("application/pdf"))
-                throw new Exception("Resume is not type");//exception
+                throw new InvalidResumeTypeException();
 
             if (!dto.Resume.IsValidSize(3))
-                throw new Exception("Resume is not size"); //exception
+                throw new InvalidResumeSizeException();
             
             var path = Path.Combine("wwwroot",candidateJobOffer.ResumeUrl);
             if (File.Exists(path))
@@ -109,7 +111,7 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             JobOfferId = x.JobOfferId
         });
         if (candidateJobOffer == null)
-            throw new Exception("Candidate job Offer not found"); //exception
+            throw new NotFoundException<CandidateJobOffer>();
         return candidateJobOffer;
     }
 
