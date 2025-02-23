@@ -13,5 +13,4 @@ public interface ICandidateJobOfferService
     Task UpdateCandidateJobOffer(int id,CandidateJobOfferUpdateDto dto,string? uploadPath);
     Task<CandidateJobOfferGetDto?> GetByIdCandidateJobOffer(int id);
     Task<IEnumerable<CandidateJobOfferGetDto>> GetAllCandidateJobOffers();
-    Task<IEnumerable<CandidateJobOffer>> GetAllCandidateJobOffersForAdmin();
 }

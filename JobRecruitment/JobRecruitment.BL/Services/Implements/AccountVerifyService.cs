@@ -25,9 +25,9 @@ public class AccountVerifyService:IAccountVerifyService
     }
     public async Task AccountVerify(string userToken)
     {
-        string? email = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+        string? email = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
         User user = await _userManager.FindByEmailAsync(email);
-        var cacheToken = _cache.Get<string>(user.Fullname);
+        var cacheToken = _cache.Get<string>(email);
         if (string.IsNullOrEmpty(userToken) || string.IsNullOrEmpty(cacheToken))
             throw new UnauthorizedAccessException("User is not authenticated or token is missing.");
         

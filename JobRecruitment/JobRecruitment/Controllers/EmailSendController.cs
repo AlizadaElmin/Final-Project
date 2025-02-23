@@ -12,8 +12,7 @@ public class EmailSendController(IEmailService _emailService):ControllerBase
     [HttpPost("[action]")]
     public async Task<IActionResult> SendMail()
     {
-        await _emailService.SendEmail();
+        await _emailService.SendEmailAsync("confirmation",null,null);
         return Content("Email sent");
     }
-
 }

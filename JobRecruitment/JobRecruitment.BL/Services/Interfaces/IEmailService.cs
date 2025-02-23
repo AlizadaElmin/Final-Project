@@ -2,5 +2,5 @@ namespace JobRecruitment.BL.Services.Interfaces;
 
 public interface IEmailService
 {
-    Task SendEmail();
+    Task SendEmailAsync(string? email, string forgotToken, string reason);
 }

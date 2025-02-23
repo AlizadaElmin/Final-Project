@@ -85,6 +85,9 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             if (!dto.Resume.IsValidSize(3))
                 throw new Exception("Resume is not size"); //exception
             
+            var path = Path.Combine("wwwroot",candidateJobOffer.ResumeUrl);
+            if (File.Exists(path))
+                File.Delete(path);
             string fileName = await dto.Resume.UploadFileAsync(uploadPath);
             candidateJobOffer.ResumeUrl = Path.Combine("wwwroot","resumes",fileName);
         }
@@ -113,10 +116,5 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
             JobOfferId = x.JobOfferId
         }, true,true);
         return candidateJobOffers;
-    }
-
-    public async Task<IEnumerable<CandidateJobOffer>> GetAllCandidateJobOffersForAdmin()
-    {
-        return  await _candidateJobOfferRepository.GetAllAsync(x => x,true);
     }
 }

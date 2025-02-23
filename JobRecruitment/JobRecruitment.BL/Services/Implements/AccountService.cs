@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace JobRecruitment.BL.Services.Implements;
 
-public class AccountService(UserManager<User> _userManager,SignInManager<User> _signInManager,IMapper _mapper,IJwtTokenHandler _jwtTokenHandler):IAccoutService
+public class AccountService(UserManager<User> _userManager,SignInManager<User> _signInManager,IMapper _mapper,IJwtTokenHandler _jwtTokenHandler,IEmailService _emailService):IAccoutService
 {
     public async Task<string> RegisterAsync(RegisterDto dto)
     {
@@ -34,6 +34,8 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
                 errorDescription.Add(error.Description);
             }
         }
+
+        await _emailService.SendEmailAsync("confirmation",dto.Email,null);
         return user.UserName;
     } 
 
@@ -53,7 +55,7 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
         var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password,false);
         if (!result.Succeeded)
         {
-            if (result.IsLockedOut) throw new Exception();//exceptio
+            if(result.IsLockedOut) throw new Exception();//exceptio
             if(result.IsNotAllowed) throw new Exception();//exceptio
         }
 

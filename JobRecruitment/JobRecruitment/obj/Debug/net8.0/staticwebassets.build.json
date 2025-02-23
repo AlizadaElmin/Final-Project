@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "obtIHF09Da06XNTQwXpVXLnqiX0ul5VaJdt6KdeCq9s=",
+  "Hash": "CJbHkaB7RA0ZnxTwhoD2Zl5QzhZpQ+rWndaVHXMVvyQ=",
   "Source": "JobRecruitment",
   "BasePath": "_content/JobRecruitment",
   "Mode": "Default",
@@ -15,5 +15,82 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/b3pkx0qj.o1m.pdf",
+      "SourceId": "JobRecruitment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/",
+      "BasePath": "_content/JobRecruitment",
+      "RelativePath": "b3pkx0qj.o1m.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/b3pkx0qj.o1m.pdf"
+    },
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/h1xwqjdd.3he.pdf",
+      "SourceId": "JobRecruitment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/",
+      "BasePath": "_content/JobRecruitment",
+      "RelativePath": "h1xwqjdd.3he.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/h1xwqjdd.3he.pdf"
+    },
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/rj4qqjyz.2xo.pdf",
+      "SourceId": "JobRecruitment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/",
+      "BasePath": "_content/JobRecruitment",
+      "RelativePath": "rj4qqjyz.2xo.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/rj4qqjyz.2xo.pdf"
+    },
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/ximflifa.i3t.pdf",
+      "SourceId": "JobRecruitment",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Final project/JobRecruitment/JobRecruitment/wwwroot/",
+      "BasePath": "_content/JobRecruitment",
+      "RelativePath": "ximflifa.i3t.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/ximflifa.i3t.pdf"
+    }
+  ]
 }
