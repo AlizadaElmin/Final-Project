@@ -52,7 +52,9 @@ public class CandidateJobOfferService(ICandidateJobOfferRepository _candidateJob
         }
         var path = Path.Combine("wwwroot",candidateJobOffer.ResumeUrl);
         if (File.Exists(path))
+        {
             File.Delete(path);
+        }
         await _candidateJobOfferRepository.DeleteAndSaveAsync(id);
     }
 

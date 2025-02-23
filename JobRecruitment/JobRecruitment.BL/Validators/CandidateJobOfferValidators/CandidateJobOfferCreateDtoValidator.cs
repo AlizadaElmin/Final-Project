@@ -2,15 +2,12 @@ using FluentValidation;
 using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 
-namespace JobRecruitment.BL.Validators.UserValidators;
+namespace JobRecruitment.BL.Validators.CandidateJobOfferValidators;
 
 public class CandidateJobOfferCreateDtoValidator:AbstractValidator<CandidateJobOfferCreateDto>
 {
     public CandidateJobOfferCreateDtoValidator()
     {
-        // RuleFor(x => x.CandidateId)
-        //     .NotEmpty().WithMessage("CandidateId is required.");
-
         RuleFor(x => x.JobOfferId)
             .NotNull().NotEmpty().WithMessage("Job offer id is required.")
             .GreaterThan(0).WithMessage("JobOfferId must be a valid ID.");

@@ -4,18 +4,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JobRecruitment.Controllers
+namespace JobRecruitment.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class AuthController(IEmailService _emailService,IAccountVerifyService _verifyService) : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController(IEmailService _emailService,IAccountVerifyService _verifyService) : ControllerBase
+    [Authorize]
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Verify(string token)
     {
-        [Authorize]
-        [HttpPost("[action]")]
-        public async Task<IActionResult> Verify(string token)
-        {
-            await _verifyService.AccountVerify(token);
-            return Content("Email confirmed");
-        }
+        await _verifyService.AccountVerify(token);
+        return Content("Email confirmed");
     }
 }

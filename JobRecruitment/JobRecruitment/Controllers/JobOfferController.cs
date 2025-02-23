@@ -2,6 +2,7 @@ using JobRecruitment.BL.DTOs.CategoryDtos;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace JobRecruitment.Controllers;
 
 [Route("api/[controller]")]
 [ApiController] 
+[Authorize(Roles =nameof(UserRole.Employer))]
 public class JobOfferController(IJobOfferService _service) : ControllerBase
 { 
     [HttpPost]
@@ -62,7 +64,7 @@ public class JobOfferController(IJobOfferService _service) : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> FilterJobs(string category,int? minSalary, int? maxSalary)
+    public async Task<IActionResult> FilterJobs(string? category,decimal? minSalary, decimal? maxSalary)
     {
       return Ok( await  _service.GetFilteredJobOffers(category,minSalary,maxSalary));
     }

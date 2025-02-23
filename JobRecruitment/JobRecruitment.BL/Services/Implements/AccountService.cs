@@ -59,7 +59,7 @@ public class AccountService(UserManager<User> _userManager,SignInManager<User> _
             if(result.IsNotAllowed) throw new Exception();//exceptio
         }
 
-        var token =  _jwtTokenHandler.CreateToken(user, 36);
+        var token =  await _jwtTokenHandler.CreateToken(user, 36);
         return token ;
     }
 }

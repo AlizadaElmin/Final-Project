@@ -10,5 +10,4 @@ public class JobOfferCreateDto
     public Decimal? MaxSalary { get; set; }
     public DateTime ExpiryDate { get; set; } 
     public int CategoryId { get; set; }
-    public string EmployerId { get; set; }
 }

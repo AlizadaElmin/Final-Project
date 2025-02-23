@@ -1,7 +1,8 @@
 using FluentValidation;
+using JobRecruitment.BL.DTOs.PasswordDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 
-namespace JobRecruitment.BL.Validators.UserValidators;
+namespace JobRecruitment.BL.Validators.PasswordValidators;
 
 public class ChangePasswordDtoValidator : AbstractValidator<ChangePasswordDto>
 {

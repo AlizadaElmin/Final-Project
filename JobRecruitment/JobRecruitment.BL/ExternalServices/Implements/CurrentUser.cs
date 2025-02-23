@@ -1,6 +1,5 @@
 using System.Security.Claims;
 using AutoMapper;
-using JobRecruitment.BL.Constants;
 using JobRecruitment.BL.DTOs.UserDtos;
 using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.ExternalServices.Interfaces;
@@ -18,8 +17,8 @@ public class CurrentUser(IHttpContextAccessor _httpContext,
     public string GetEmail()
     {
         var value = User.FindFirst(x => x.Type == ClaimTypes.Email)?.Value;
-        if (value is null)
-            throw new Exception("User does not exist");
+        // if (value is null)
+            // throw new UserNotFoundException();
         return value;
     }
 

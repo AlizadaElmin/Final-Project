@@ -1,7 +1,6 @@
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
-using JobRecruitment.BL.Constants;
 using JobRecruitment.BL.DTOs.Options;
 using JobRecruitment.BL.Exceptions.Common;
 using JobRecruitment.BL.Services.Interfaces;

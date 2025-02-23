@@ -11,5 +11,6 @@ public class CandidateJobOfferProfile:Profile
     {
         CreateMap<CandidateJobOfferCreateDto, CandidateJobOffer>();
         CreateMap<CandidateJobOfferUpdateDto, CandidateJobOffer>();
+        CreateMap<CandidateJobOffer, CandidateJobOfferGetDto>();
     }
 }

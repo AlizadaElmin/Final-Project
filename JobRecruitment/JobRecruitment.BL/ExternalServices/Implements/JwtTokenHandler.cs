@@ -1,10 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using JobRecruitment.BL.Constants;
 using JobRecruitment.BL.DTOs.Options;
 using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -13,18 +13,22 @@ namespace JobRecruitment.BL.ExternalServices.Implements;
 public class JwtTokenHandler:IJwtTokenHandler
 {
     readonly JwtOptions _opt;
-    public JwtTokenHandler(IOptions<JwtOptions> opt)
+    private UserManager<User> _userManager;
+    public JwtTokenHandler(IOptions<JwtOptions> opt,UserManager<User> userManager)
     {
         _opt = opt.Value;
+        _userManager = userManager;
     }
-    public string CreateToken(User user, int hours = 36)
+    public async Task<string> CreateToken(User user, int hours = 36)
     {
+        var roles = await _userManager.GetRolesAsync(user);
         List<Claim> claims = [
             new Claim(ClaimTypes.Name, user.Fullname),
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Role, roles[0]),
         ];
-            // new Claim(ClaimType.Role,user.Role)
+           
        
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_opt.SecretKey));
         SigningCredentials cred = new(key, SecurityAlgorithms.HmacSha256);

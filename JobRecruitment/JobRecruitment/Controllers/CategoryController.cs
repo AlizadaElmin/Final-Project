@@ -1,13 +1,17 @@
 using JobRecruitment.BL.DTOs.CategoryDtos;
 using JobRecruitment.BL.Services.Interfaces;
+using JobRecruitment.Core.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobRecruitment.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Roles =nameof(UserRole.Employer))]
 public class CategoryController(ICategoryService _service) : ControllerBase
 {
+
     [HttpPost]
     public async Task<IActionResult> CreateCategory(CategoryCreateDto createDto)
     {

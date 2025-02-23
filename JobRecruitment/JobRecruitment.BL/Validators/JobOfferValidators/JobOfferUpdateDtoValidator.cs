@@ -44,8 +44,5 @@ public class JobOfferUpdateDtoValidator: AbstractValidator<JobOfferUpdateDto>
             .GreaterThan(0)
             .WithMessage("CategoryId must be a valid ID.");
 
-        RuleFor(x => x.EmployerId)
-            .NotEmpty()
-            .WithMessage("EmployerId is required.");
     }
 }

@@ -1,5 +1,7 @@
+using JobRecruitment.BL.DTOs.PasswordDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 using JobRecruitment.BL.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobRecruitment.Controllers;
@@ -24,6 +26,7 @@ public class PasswordController(IPasswordService _passwordService):ControllerBas
     }
     
     [HttpPost("[action]")]
+    [Authorize]
     public async Task<ActionResult> ChangePassword(ChangePasswordDto dto)
     {
         await _passwordService.ChangePasswordAsync(dto);

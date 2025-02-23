@@ -1,3 +1,5 @@
+using JobRecruitment.BL.DTOs.CandidateJobOfferDtos;
+using JobRecruitment.BL.DTOs.SavedJobDtos;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Enums;
 
@@ -14,6 +16,6 @@ public class JobOfferGetDto
     public int CategoryId { get; set; }
     public string Category { get; set; }
     public string EmployerId { get; set; }
-    public ICollection<CandidateJobOffer> Candidates { get; set; } 
-    public ICollection<SavedJob> SavedByUsers { get; set; }  
+    public List<CandidateJobOfferGetDto> Candidates { get; set; } 
+    public IEnumerable<SavedJobGetDto> SavedByUsers { get; set; }  
 }

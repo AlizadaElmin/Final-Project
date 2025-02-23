@@ -1,3 +1,4 @@
+using JobRecruitment.BL.DTOs.PasswordDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 
 namespace JobRecruitment.BL.Services.Interfaces;

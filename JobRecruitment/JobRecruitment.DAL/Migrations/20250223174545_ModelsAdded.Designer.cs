@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobRecruitment.DAL.Migrations
 {
     [DbContext(typeof(JobRecruitmentDbContext))]
-    [Migration("20250223000931_ModelsAdded")]
+    [Migration("20250223174545_ModelsAdded")]
     partial class ModelsAdded
     {
         /// <inheritdoc />

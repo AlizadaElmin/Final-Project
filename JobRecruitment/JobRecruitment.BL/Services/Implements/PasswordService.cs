@@ -1,3 +1,4 @@
+using JobRecruitment.BL.DTOs.PasswordDtos;
 using JobRecruitment.BL.DTOs.UserDtos;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;

@@ -1,4 +1,4 @@
-namespace JobRecruitment.BL.DTOs.UserDtos;
+namespace JobRecruitment.BL.DTOs.PasswordDtos;
 
 public class ChangePasswordDto
 {

@@ -1,18 +1,19 @@
 using AutoMapper;
 using JobRecruitment.BL.DTOs.JobOfferDtos;
 using JobRecruitment.BL.DTOs.SavedJobDtos;
+using JobRecruitment.BL.ExternalServices.Interfaces;
 using JobRecruitment.BL.Services.Interfaces;
 using JobRecruitment.Core.Entities;
 using JobRecruitment.Core.Repositories;
 
 namespace JobRecruitment.BL.Services.Implements;
 
-public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _mapper):ISavedJobService
+public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _mapper,ICurrentUser _user):ISavedJobService
 {
     public async Task CreateSavedJob(SavedJobCreateDto dto)
     {
         var savedJob = _mapper.Map<SavedJob>(dto);
-        savedJob.IsDeleted = false;
+        savedJob.CandidateId = _user.GetId();
         await _savedJobRepository.AddAsync(savedJob); 
         await _savedJobRepository.SaveAsync();
     }
@@ -41,6 +42,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
             throw new Exception("Saved job not found");  //exception
 
         _mapper.Map(dto, savedJob);
+        savedJob.CandidateId = _user.GetId();
         await _savedJobRepository.SaveAsync();
     }
 
@@ -49,7 +51,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
         var savedJob = await _savedJobRepository.GetByIdAsync(id, x => new SavedJobGetDto()
         {
             CandidateId = x.CandidateId,
-            JobOfferId = x.JobOfferId
+            JobOfferId = x.JobOfferId,
         });
         if (savedJob == null)
             throw new Exception("Saved job not found"); //exception
@@ -61,7 +63,7 @@ public class SavedJobService(ISavedJobRepository _savedJobRepository,IMapper _ma
         var savedJob = await _savedJobRepository.GetAllAsync(x => new SavedJobGetDto()
         {
             CandidateId = x.CandidateId,
-            JobOfferId = x.JobOfferId
+            JobOfferId = x.JobOfferId,
         },true,true);
         if (savedJob == null)
             throw new Exception("Saved job not found"); //exception
